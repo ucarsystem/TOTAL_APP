@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import os
 
+# 메인 메뉴로 돌아가기 버튼
+if st.button("메인 메뉴로 돌아가기"):
+    st.switch_page("app")  # ✅ 메인 페이지로 이동
+    
 # 데이터 불러오기
 @st.cache_data
 def load_data():
