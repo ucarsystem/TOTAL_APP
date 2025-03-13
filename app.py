@@ -31,9 +31,7 @@ elif mode == "운전자 모드":
     if driver_menu == "ID 조회":
         st.title("ID 조회 페이지로 이동 중...")
         st.write("ID 조회 시스템을 실행합니다.")
-        with open(ID_DIR, encoding="utf-8") as f:
-            code = f.read()
-            exec(code)
+        st.switch_page("pages/id_lookup.py")
 
     
     elif driver_menu == "내 등급현황 조회":
