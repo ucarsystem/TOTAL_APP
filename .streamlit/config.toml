@@ -1,0 +1,8 @@
+[server]
+enableStaticServing = false
+
+[theme]
+base="light"
+
+[client]
+showSidebarNavigation = false  # 기본 내비게이션 숨김
