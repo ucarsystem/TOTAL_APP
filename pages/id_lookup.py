@@ -4,7 +4,8 @@ import os
 
 # 메인 메뉴로 돌아가기 버튼
 if st.button("메인 메뉴로 돌아가기"):
-    st.switch_page("app")  # ✅ 메인 페이지로 이동
+    st.session_state["menu"] = "main"  # 세션 상태 변경
+    st.experimental_rerun()  # 페이지 새로고침하여 app.py로 이동
     
 # 데이터 불러오기
 @st.cache_data
