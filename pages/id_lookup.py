@@ -5,7 +5,9 @@ import os
 # 데이터 불러오기
 @st.cache_data
 def load_data():
-
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "인천ID.xlsx") 
+    
     xls = pd.ExcelFile(file_path, engine='openpyxl')  # 명시적으로 엔진 설정
     id_list_df = pd.read_excel(xls, sheet_name="ID목록", engine='openpyxl')
     grade_df = pd.read_excel(xls, sheet_name="운전자별 등급현황", engine='openpyxl')
