@@ -2,35 +2,14 @@ import streamlit as st
 import pandas as pd
 import os
 
-# 현재 실행 중인 파일의 디렉토리 찾기
-base_dir = os.path.dirname(os.path.abspath(__file__))  # 현재 실행 중인 Python 파일의 디렉토리
-file_path = os.path.join(base_dir, "인천ID.xlsx")  # app 폴더 내에 직접 위치
-
-# 파일 존재 여부 확인
-st.write(f"엑셀 파일 경로: {file_path}")
-st.write(f"파일 존재 여부: {os.path.exists(file_path)}")
-
 # 데이터 불러오기
 @st.cache_data
 def load_data():
-    # 현재 `id_lookup.py` 파일이 있는 폴더의 상위 폴더(`TOTAL_APP/`)를 기준으로 경로 설정
-    # base_dir = os.path.dirname(os.path.abspath(__file__))
-    # file_path = os.path.join(base_dir, "인천ID.xlsx") 
+
     xls = pd.ExcelFile(file_path, engine='openpyxl')  # 명시적으로 엔진 설정
     id_list_df = pd.read_excel(xls, sheet_name="ID목록", engine='openpyxl')
     grade_df = pd.read_excel(xls, sheet_name="운전자별 등급현황", engine='openpyxl')
     return id_list_df, grade_df
-
-    # 파일이 존재하는지 확인
-    # if not os.path.exists(file_path):
-    #     raise FileNotFoundError(f"데이터 파일을 찾을 수 없습니다: {file_path}")
-
-    # # 엑셀 파일 읽기
-    # xls = pd.ExcelFile(file_path)
-    # id_list_df = pd.read_excel(xls, sheet_name="ID목록")
-    # grade_df = pd.read_excel(xls, sheet_name="운전자별 등급현황")
-
-    # return id_list_df, grade_df
 
 
 id_list_df, grade_df = load_data()
